@@ -1,4 +1,4 @@
-<h1 align="center"><b>Motivaţia alegerii temei, utilitatea aplicaţiei</b></h1>
+<h1 align="center"><b>Jocul 2048</b></h1>
 
 <table align="center" width="100%" style="border-collapse: collapse; border: none; table-layout: fixed;">
   <tr style="border: none;">
@@ -13,6 +13,10 @@
     </td>
   </tr>
 </table>
+
+---
+
+<h1 align="center"><b>Motivaţia alegerii temei, utilitatea aplicaţiei</b></h1>
 
 <h2><b>1. Argumentul alegerii proiectului</b></h2>
 
