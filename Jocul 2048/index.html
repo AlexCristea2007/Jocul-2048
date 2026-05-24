@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jocul 2048 - Proiect Atestat</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./resources/favicon.png" />
+  </head>
+  <body class="intro-activ">
+    <div id="intro-overlay">
+      <div id="intro-center">
+        <div id="intro-tile-left" class="intro-tile">2</div>
+        <div id="intro-tile-main" class="intro-tile">2</div>
+        <div id="intro-tile-right" class="intro-tile">2</div>
+      </div>
+    </div>
+
+    <header>
+      <div class="header-top">
+        <h1>JOCUL 2048</h1>
+        <div class="scor-container">
+          <div class="scor-box">
+            <span>SCOR</span>
+            <span id="scor-curent">0</span>
+          </div>
+          <div class="scor-box">
+            <span>BEST</span>
+            <span id="scor-best">0</span>
+          </div>
+          <div class="scor-box">
+            <span>MUTĂRI</span>
+            <span id="numar-mutari">0</span>
+          </div>
+          <div class="scor-box">
+            <span>TIMP</span>
+            <span id="timp-jucat">00:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-bottom">
+        <div class="butoane-joc">
+          <button class="btn" onclick="deschideReguli()">Reguli</button>
+          <button class="btn" onclick="deschideSelectorTema()">Temă</button>
+          <button class="btn" onclick="deschideSelectorDificultate()">
+            Dificultate
+          </button>
+          <div class="scop-wrapper">
+            <button class="btn" id="btn-scop" onclick="toggleDropdownScop()">
+              Scop: <span id="scop-curent">2048</span>
+            </button>
+            <div class="scop-dropdown" id="scop-dropdown">
+              <button
+                class="scop-dropdown-item"
+                data-value="64"
+                onclick="schimbaScop(64)"
+              >
+                64
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="128"
+                onclick="schimbaScop(128)"
+              >
+                128
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="256"
+                onclick="schimbaScop(256)"
+              >
+                256
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="512"
+                onclick="schimbaScop(512)"
+              >
+                512
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="1024"
+                onclick="schimbaScop(1024)"
+              >
+                1024
+              </button>
+              <button
+                class="scop-dropdown-item activ"
+                data-value="2048"
+                onclick="schimbaScop(2048)"
+              >
+                2048
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="4096"
+                onclick="schimbaScop(4096)"
+              >
+                4096
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="8192"
+                onclick="schimbaScop(8192)"
+              >
+                8192
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="16384"
+                onclick="schimbaScop(16384)"
+              >
+                16384
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="32768"
+                onclick="schimbaScop(32768)"
+              >
+                32768
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="65536"
+                onclick="schimbaScop(65536)"
+              >
+                65536
+              </button>
+              <button
+                class="scop-dropdown-item"
+                data-value="131072"
+                onclick="schimbaScop(131072)"
+              >
+                131072
+              </button>
+            </div>
+          </div>
+          <button
+            class="btn btn-anulare"
+            id="btn-anulare"
+            onclick="anuleazaMutare()"
+          >
+            Înapoi
+          </button>
+          <button class="btn btn-primary" onclick="restartJoc()">
+            Joc Nou
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="container-joc" class="grid-container">
+        <div class="grid-background" id="grid-background"></div>
+
+        <div class="tile-container" id="tile-container"></div>
+      </div>
+
+      <div id="overlay-game-over" class="overlay">
+        <div class="mesaj-final">
+          <h2>Game Over!</h2>
+          <p>Nu mai există mutări posibile.</p>
+          <button class="btn btn-primary" onclick="restartJoc()">
+            Încearcă din nou
+          </button>
+        </div>
+      </div>
+
+      <div id="overlay-win" class="overlay">
+        <div class="mesaj-final">
+          <h2>Ai câștigat!</h2>
+          <p>Ai atins placa <strong id="scop-atins">2048</strong>!</p>
+          <button
+            class="btn btn-primary"
+            style="margin-top: 10px"
+            onclick="restartJoc()"
+          >
+            Joc Nou
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div id="modal-tema" class="modal">
+      <div class="modal-continut">
+        <span class="inchide-modal" onclick="inchideSelectorTema()"
+          >&times;</span
+        >
+        <h3>Alege o temă</h3>
+        <div class="teme-selector">
+          <button
+            class="tema-optiune tema-albastru"
+            onclick="schimbaTema('albastru')"
+          >
+            Albastru
+          </button>
+          <button
+            class="tema-optiune tema-verde"
+            onclick="schimbaTema('verde')"
+          >
+            Verde
+          </button>
+          <button
+            class="tema-optiune tema-portocaliu"
+            onclick="schimbaTema('portocaliu')"
+          >
+            Portocaliu
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-reguli" class="modal">
+      <div class="modal-continut">
+        <span class="inchide-modal" onclick="inchideReguli()">&times;</span>
+        <h3>Cum se joacă?</h3>
+        <ul>
+          <li><strong>Scop:</strong> Obține placa cu numărul 2048!</li>
+          <li>
+            <strong>Controale PC:</strong> Folosește tastele săgeți (Sus, Jos,
+            Stânga, Dreapta).
+          </li>
+          <li>
+            <strong>Controale Mobil:</strong> Trage cu degetul (Swipe) pe ecran.
+          </li>
+          <li>
+            <strong>Regulă:</strong> Când două plăci cu același număr se ating,
+            ele se unesc, dublându-și valoarea.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modal-dificultate" class="modal">
+      <div class="modal-continut">
+        <span class="inchide-modal" onclick="inchideSelectorDificultate()"
+          >&times;</span
+        >
+        <h3>Alege dificultatea</h3>
+        <p class="dificultate-avertisment">
+          Schimbarea dificultății pornește un joc nou!
+        </p>
+        <div class="dificultate-selector">
+          <button
+            class="dificultate-optiune"
+            id="btn-easy"
+            onclick="schimbaDificultate('easy')"
+          >
+            <span class="dif-label">Ușor</span>
+            <span class="dif-grid">4×4</span>
+          </button>
+          <button
+            class="dificultate-optiune"
+            id="btn-medium"
+            onclick="schimbaDificultate('medium')"
+          >
+            <span class="dif-label">Mediu</span>
+            <span class="dif-grid">6×6</span>
+          </button>
+          <button
+            class="dificultate-optiune"
+            id="btn-hard"
+            onclick="schimbaDificultate('hard')"
+          >
+            <span class="dif-label">Greu</span>
+            <span class="dif-grid">8×8</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Proiect Atestat Informatică - Cristea Adrian Alexandru</p>
+    </footer>
+
+    <div id="toast-scop" class="toast-notif">
+      Scopul poate fi schimbat doar la începutul jocului!
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
