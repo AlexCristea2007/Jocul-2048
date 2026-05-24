@@ -1,5 +1,19 @@
 <h1 align="center"><b>Motivaţia alegerii temei, utilitatea aplicaţiei</b></h1>
 
+<table align="center" width="100%" style="border-collapse: collapse; border: none; table-layout: fixed;">
+  <tr style="border: none;">
+    <td align="center" width="33.33%" style="border: none; padding: 5px;">
+      <img src="https://github.com/user-attachments/assets/7ff5db27-b7b2-48bc-8279-4bc6147dfbe0" style="width: 100%; height: auto; display: block;" alt="Tema Albastra" />
+    </td>
+    <td align="center" width="33.33%" style="border: none; padding: 5px;">
+      <img src="https://github.com/user-attachments/assets/b12061db-62a2-499a-a0e5-f330e5a2d609" style="width: 100%; height: auto; display: block;" alt="Fereastra Reguli" />
+    </td>
+    <td align="center" width="33.33%" style="border: none; padding: 5px;">
+      <img src="https://github.com/user-attachments/assets/0558cced-1280-45e8-b34e-c62c9015f301" style="width: 100%; height: auto; display: block;" alt="Meniu Dificultate" />
+    </td>
+  </tr>
+</table>
+
 <h2><b>1. Argumentul alegerii proiectului</b></h2>
 
 > Alegerea proiectului de atestat a reprezentat o decizie bazată pe dorința de a îmbina cunoștințele de algoritmică dobândite la orele de informatică cu tehnologiile moderne de dezvoltare web. Am considerat că realizarea jocului „2048” constituie o probă de competență autentică, deoarece nu presupune doar simpla afișare a unor elemente grafice, ci necesită implementarea unei logici riguroase de gestionare a datelor. Pentru un elev în an terminal, acest proiect este puntea de legătură între problemele teoretice de tip olimpiadă și software-ul de larg consum, oferindu-mi ocazia să finalizez un produs complet, de la codul sursă până la interfața destinată utilizatorului final. Procesul de dezvoltare m-a ajutat să înțeleg mai bine ciclul de viață al unei aplicații, de la stadiul de idee și structură logică, până la optimizarea experienței vizuale pentru publicul larg, oferindu-mi o satisfacție profesională deosebită în momentul în care am văzut proiectul funcțional.
